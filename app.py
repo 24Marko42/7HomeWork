@@ -58,26 +58,37 @@ logging.basicConfig(level=logging.INFO)
 app.logger.setLevel(logging.INFO)
 
 def load_members():
-    path = os.path.join(BASE, 'members', 'members.json')
+    path = os.path.join(BASE, "members", "members.json")
+
     try:
-        with open(path, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        with open(path, "r", encoding="utf-8") as f:
+            members = json.load(f)
     except FileNotFoundError:
-        app.logger.warning(f"Файл {path} не найден. Создаю тестовые данные.")
-        return [
-            {
-                "name": "Иван Петров",
-                "photo": "default.jpg",
-                "speciality": "Капитан корабля",
-                "description": "Опытный пилот с 10-летним стажем"
-            },
-            {
-                "name": "Мария Сидорова",
-                "photo": "default.jpg",
-                "speciality": "Главный инженер",
-                "description": "Специалист по жизнеобеспечению"
-            }
-        ]
+        app.logger.error("members.json not found!")
+        return []
+
+    for m in members:
+        photo = m.get("photo", "").strip()
+
+        # Убираем возможный ведущий слэш
+        if photo.startswith("/"):
+            photo = photo[1:]
+
+        # Абсолютный путь к файлу в static
+        abs_path = os.path.join(BASE, "static", photo)
+
+        # Если файла НЕТ → default
+        if not os.path.exists(abs_path):
+            app.logger.warning(f"Фото не найдено: {abs_path}. Использую default.")
+            m["photo"] = "img/default.jpg"
+        else:
+            # Файл найден → используем как есть
+            m["photo"] = photo
+
+    return members
+
+
+
 
 def save_application(data, photo_path=None, photo_name=None):
     """Сохраняет заявку в лог-файл вместо отправки email"""
