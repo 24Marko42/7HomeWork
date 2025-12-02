@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>{{ title }}</h2>
+  <form method="post" enctype="multipart/form-data" novalidate>
+    {{ form.hidden_tag() }}
+
+    <div class="mb-2">
+      {{ form.surname.label }} 
+      {{ form.surname(class="form-control") }}
+      {% for e in form.surname.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+    </div>
+
+    <div class="mb-2">
+      {{ form.name.label }} {{ form.name(class="form-control") }}
+    </div>
+
+    <div class="mb-2">
+      {{ form.email.label }} {{ form.email(class="form-control") }}
+      {% for e in form.email.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+    </div>
+
+    <div class="mb-2">
+      {{ form.education.label }} {{ form.education(class="form-control") }}
+    </div>
+
+    <div class="mb-2">
+      {{ form.profession.label }} {{ form.profession(class="form-select") }}
+    </div>
+    
+    <label class="form-label">{{ form.sex.label.text }}</label>
+    <div>
+      {% for subfield in form.sex %}
+        <div class="form-check form-check-inline">
+          {{ subfield(class="form-check-input") }}
+          <label class="form-check-label" for="{{ subfield.id }}">{{ subfield.label.text }}</label>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="mb-2 mt-2">
+      {{ form.motivation.label }} {{ form.motivation(class="form-control", rows=3) }}
+    </div>
+
+    <div class="form-check mb-2">
+      {{ form.ready(class="form-check-input") }}
+      <label class="form-check-label" for="{{ form.ready.id }}">{{ form.ready.label.text }}</label>
+    </div>
+
+    <div class="mb-2">
+      {{ form.photo.label }} {{ form.photo(class="form-control") }}
+    </div>
+
+    <div class="mt-3">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+{% endblock %}

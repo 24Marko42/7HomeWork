@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>{{ title }}</h2>
+  <p>Здравствуйте, {{ username }}!</p>
+  <ul>
+    {% for ep,label in routes %}
+      <li><a href="{{ ep }}">{{ label }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

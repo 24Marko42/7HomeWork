@@ -1,0 +1,12 @@
+[
+  {"name":"Иван","surname":"Петров","photo":"members/photo/1.png","specialties":["Пилот","Штурман"]},
+  {"name":"Анна","surname":"Сидорова","photo":"members/photo/2.png","specialties":["Врач","Биолог"]},
+  {"name":"Егор","surname":"Кузнецов","photo":"members/photo/3.png","specialties":["Инженер жизнеобеспечения","Киберинженер"]},
+  {"name":"Мария","surname":"Попова","photo":"members/photo/4.png","specialties":["Экзобиолог","Гляциолог"]},
+  {"name":"Алексей","surname":"Смирнов","photo":"members/photo/5.png","specialties":["Астрогеолог","Оператор марсохода"]},
+  {"name":"Ольга","surname":"Николаева","photo":"members/photo/6.png","specialties":["Климатолог","Инженер по терраформированию"]},
+  {"name":"Павел","surname":"Морозов","photo":"members/photo/7.png","specialties":["Инженер-исследователь","Строитель"]},
+  {"name":"Елена","surname":"Васильева","photo":"members/photo/8.png","specialties":["Специалист по радиационной защите","Врач"]},
+  {"name":"Роман","surname":"Киселёв","photo":"members/photo/9.png","specialties":["Пилот дронов","Метеоролог"]},
+  {"name":"Наталья","surname":"Зайцева","photo":"members/photo/10.png","specialties":["Инженер-исследователь","Киберинженер"]}
+]

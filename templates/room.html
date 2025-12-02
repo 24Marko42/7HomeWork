@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>{{ title }}</h2>
+  {% if error %}<div class="alert alert-danger">{{ error }}</div>
+  {% else %}
+    <table class="table w-50">
+      <tr><th>Цвет стен</th><th>Эмблема</th></tr>
+      <tr>
+        <td>{% if sex=='male' %}Синий{% else %}Розовый{% endif %}</td>
+        <td>
+          {% if age < 21 %}Молодёжная эмблема{% else %}Взрослая эмблема{% endif %}
+        </td>
+      </tr>
+    </table>
+  {% endif %}
+{% endblock %}

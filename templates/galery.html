@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>{{ title }}</h2>
+  {% if images %}
+    <div id="c" class="carousel slide mb-3" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        {% for img in images %}
+          <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <img src="{{ img }}" class="d-block w-100" style="max-height:400px;object-fit:cover;">
+          </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#c" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#c" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+    </div>
+  {% else %}<p>Пусто</p>{% endif %}
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" class="form-control mb-2">
+    <button class="btn btn-success">Загрузить</button>
+  </form>
+{% endblock %}
+  

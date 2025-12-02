@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>{{ title }}</h2>
+  {% for m in members %}
+    <div>{{ m.name }} {{ m.surname }} - Каюта № {{ loop.index }}{% if loop.first %} - капитан корабля{% endif %}</div>
+  {% endfor %}
+{% endblock %}

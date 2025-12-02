@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>{{ title }}</h2>
+  {% if bad %}
+    <div class="alert alert-danger">Неверный параметр: {{ param }}</div>
+  {% else %}
+    {% if list_type == 'ol' %}
+      <ol>{% for p in professions %}<li>{{p}}</li>{% endfor %}</ol>
+    {% else %}
+      <ul>{% for p in professions %}<li>{{p}}</li>{% endfor %}</ul>
+    {% endif %}
+  {% endif %}
+{% endblock %}

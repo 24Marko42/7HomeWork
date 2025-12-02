@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>{{ title }}</h2>
+  {% if error %}<div class="alert alert-danger">{{ error }}</div>
+  {% else %}
+    {% if pick_random %}{% set member = members|random %}{% endif %}
+    <h2>{{ member.name }} {{ member.surname }}</h2>
+    <img src="{{ url_for('static', filename=member.photo) }}" alt="photo" style="max-width:240px;">
+    <p>{{ member.specialties|sort|join(', ') }}</p>
+  {% endif %}
+{% endblock %}
